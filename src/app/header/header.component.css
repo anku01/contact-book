@@ -1,0 +1,12 @@
+.not-active {
+  pointer-events: none;
+  cursor: default;
+  color: #fff !important;
+}
+.navbar-brand{
+	color: #fff;
+}
+.navbar-inverse {
+    background-color: #0062cc;
+    border-color: #0062cc;
+}

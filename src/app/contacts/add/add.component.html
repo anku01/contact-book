@@ -1,0 +1,56 @@
+<ngx-spinner
+bdColor = "rgba(51, 51, 51, 0.8)"
+size = "large"
+color = "#fff"
+type = "ball-circus"
+></ngx-spinner>
+<app-header></app-header>
+
+<div class="container contact-form">
+    <form [formGroup]="registerForm" (ngSubmit)="saveContact()">
+        <h2>{{!!userId ? "Update ":"Add New " }} Contact</h2>
+       <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input name="fName" formControlName="fName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fName.errors }"  placeholder="First Name"  />
+                    <div *ngIf="submitted && f.fName.errors" class="text-danger text-right">
+                        <div *ngIf="f.fName.errors.required">First Name is required.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input name="lName" formControlName="lName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lName.errors }"  placeholder="Last Name"  />
+                    <div *ngIf="submitted && f.lName.errors" class="text-danger text-right">
+                        <div *ngIf="f.lName.errors.required">Last Name is required.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="number" name="mobile" formControlName="mobile" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"  placeholder="Mobile No."  />
+                    <div *ngIf="submitted && f.mobile.errors" class="text-danger text-right">
+                        <div *ngIf="f.mobile.errors.required">Mobile No. is required.</div>
+                        <div *ngIf="f.mobile.errors.max || f.mobile.errors.min">Invalid Mobile Number.</div>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="col-md-6">
+               <div class="form-group">
+                    <input name="empId" formControlName="empId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.empId.errors }"  placeholder="Employee Id"  />
+                    <div *ngIf="submitted && f.empId.errors" class="text-danger text-right">
+                        <div *ngIf="f.empId.errors.required">Employee Id is required.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                 <div>
+                    <button style="margin-right: 10px;"  class="btnContact btn btn-success">Save Contact</button> 
+                    <button routerLink="/contacts" type="button"  class="btnContact btn btn-default">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<app-toast></app-toast>

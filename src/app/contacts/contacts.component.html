@@ -1,0 +1,98 @@
+<app-header></app-header>
+<ngx-spinner
+bdColor = "rgba(51, 51, 51, 0.8)"
+size = "large"
+color = "#fff"
+type = "ball-circus"
+></ngx-spinner>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">			
+			<h3 style="color: #0062cc;">All Contacts <button routerLink="/addContact"  type="button" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus"></span> Add Contact</button></h3>
+		</div>
+	</div>
+	<hr/>
+</div>
+<div class="container">
+	<div class="row" style="margin-bottom: 10px;">
+		<div class="col-xs-12">
+			<h5 style="">Search Contacts</h5>
+			<form class="form-inline">
+			  <div class="form-group marginRight">
+			    <input type="text" [(ngModel)]="fName" placeholder="First Name" class="form-control" name="fName">
+			  </div>
+			  <div class="form-group marginRight">
+			    <input type="text" [(ngModel)]="lName" placeholder="Last Name" class="form-control" name="lName">
+			  </div>
+			  <div class="form-group marginRight">
+			    <input type="number" [(ngModel)]="mobile" placeholder="Mobile No." class="form-control" name="mobile">
+			  </div>
+			  <div class="form-group marginRight">
+			    <input type="text"  [(ngModel)]="empId"placeholder="Employee Id" class="form-control" name="empId">
+			  </div>
+			  <button type="button" (click)="searchContact()" class="btn btn-info">
+			  	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				Search</button>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<table class="table table-bordered">
+				<tr class="info">
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Mobile Number</th>
+					<th>Employee ID</th>
+					<th>Actions</th>
+				</tr>
+				<tr *ngFor="let contact of contacts">
+					<td>{{contact.fName}}</td>
+					<td>{{contact.lName}}</td>
+					<td>{{contact.mobile}}</td>
+					<td>{{contact.empId}}</td>
+					<td>
+						<button 
+						[routerLink]="['/contact', contact._id]" 
+						style="margin-right: 10px;" 
+						type="button" class="btn btn-success">
+							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</button>
+						<button 
+						data-toggle="modal" 
+						data-target="#myModal"
+						(click)="confirmDelete(contact)" 
+						type="button"
+						class="btn btn-danger">  
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 
+						Delete</button>
+					</td>
+					
+				</tr>
+			</table>
+		</div>
+	</div>
+	<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Confirm Delete</h4>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="deleteContact()" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<app-toast></app-toast>
