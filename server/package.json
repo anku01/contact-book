@@ -1,0 +1,30 @@
+{
+  "name": "with-hapi",
+  "version": "1.0.0",
+  "description": "sample project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "author": "Swarup",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "^4.0.12",
+    "hapi": "^17.5.4",
+    "inert": "^5.1.0",
+    "joi": "^13.6.0",
+    "mongoose": "^5.2.16",
+    "vision": "^5.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-html": "^4.0.5",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "nodemon": "^1.18.4"
+  }
+}
